@@ -22,6 +22,7 @@ public class ArticleDao {
 	ResultSet rs = null;
 	
 	private final String ARTICLE_LIST = "select * from articles order by rdate desc";
+	private final String ARTICLE_WRITE = "insert into article(id, writer, title, content) values(articles_seq.nextval, ?, ?, ?)";
 	
 	public ArticleDao() {		
 		try {
@@ -62,5 +63,24 @@ public class ArticleDao {
 			JdbcUtil.closeResource(rs, pstmt, conn);
 		}
 		return dtos;
+	}
+	
+	public void write(String writer, String title, String content) {		
+		
+		try {
+			conn = dataSource.getConnection();
+			String query = ARTICLE_WRITE;
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, writer);
+			pstmt.setString(2, title);
+			pstmt.setString(3, content);
+			pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			
+		} finally {
+			JdbcUtil.closeResource(pstmt, conn);
+		}
 	}
 }
