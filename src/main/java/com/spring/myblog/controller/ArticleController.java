@@ -22,4 +22,9 @@ public class ArticleController {
 		command.execute(model);
 		return "list";
 	}
+	
+	@RequestMapping("/write_view")
+	public String writeView(Model model) {
+		return "write_view";
+	}
 }
