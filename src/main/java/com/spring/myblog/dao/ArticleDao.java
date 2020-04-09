@@ -15,4 +15,12 @@ public class ArticleDao {
 	PreparedStatement pstmt = null;
 	ResultSet rs = null;
 	
+	public ArticleDao() {		
+		try {
+			Context context = new InitialContext();
+			dataSource = (DataSource) context.lookup("java:comp/env/jdbc/Oracle11g");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
