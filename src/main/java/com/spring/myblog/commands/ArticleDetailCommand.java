@@ -18,8 +18,8 @@ public class ArticleDetailCommand implements ArticleCommand {
 		String articleId = request.getParameter("id");
 		
 		ArticleDao dao = new ArticleDao();
-		// ArticleDto dto = dao.detail(id);
+		ArticleDto dto = dao.detail(articleId);
 		
-		// model.addAttribute("detail", dto);
+		model.addAttribute("detail_view", dto);
 	}
 }
