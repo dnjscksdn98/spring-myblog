@@ -21,7 +21,11 @@
 				<tr>
 					<td>${dto.getId()}</td>
 					<td>${dto.getWriter()}</td>
-					<td>${dto.getTitle()}</td>
+					<td>
+						<a href="detail_view.jsp?id=${dto.getId()}">
+							${dto.getTitle()}
+						</a>
+					</td>
 					<td>${dto.getRdate()}</td>
 					<td>${dto.getViews()}</td>
 				</tr>
