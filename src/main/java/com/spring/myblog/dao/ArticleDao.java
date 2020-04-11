@@ -22,7 +22,7 @@ public class ArticleDao {
 	ResultSet rs = null;
 	
 	private final String ARTICLE_LIST = "select * from articles order by rdate desc";
-	private final String ARTICLE_WRITE = "insert into article(id, writer, title, content) values(articles_seq.nextval, ?, ?, ?)";
+	private final String ARTICLE_WRITE = "insert into articles(id, writer, title, content) values(articles_seq.nextval, ?, ?, ?)";
 	
 	public ArticleDao() {		
 		try {
