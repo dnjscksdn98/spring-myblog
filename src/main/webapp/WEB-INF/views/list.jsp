@@ -22,7 +22,7 @@
 					<td>${dto.getId()}</td>
 					<td>${dto.getWriter()}</td>
 					<td>
-						<a href="detail_view.jsp?id=${dto.getId()}">
+						<a href="detail_view?id=${dto.getId()}">
 							${dto.getTitle()}
 						</a>
 					</td>
