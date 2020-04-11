@@ -1,4 +1,4 @@
-package com.spring.myblog.commands;
+package com.spring.myblog.article.commands;
 
 import java.util.ArrayList;
 

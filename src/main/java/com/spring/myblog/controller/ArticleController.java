@@ -7,10 +7,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.spring.myblog.commands.ArticleCommand;
-import com.spring.myblog.commands.ArticleListCommand;
-import com.spring.myblog.commands.ArticleWriteCommand;
-import com.spring.myblog.commands.ArticleDetailCommand;
+import com.spring.myblog.article.commands.ArticleCommand;
+import com.spring.myblog.article.commands.ArticleDetailCommand;
+import com.spring.myblog.article.commands.ArticleListCommand;
+import com.spring.myblog.article.commands.ArticleWriteCommand;
 
 
 @Controller

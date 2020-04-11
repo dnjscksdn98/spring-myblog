@@ -1,4 +1,4 @@
-package com.spring.myblog.commands;
+package com.spring.myblog.article.commands;
 
 import java.util.Map;
 
@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.ui.Model;
 
 import com.spring.myblog.dao.ArticleDao;
+import com.spring.myblog.dto.ArticleDto;
 
-public class ArticleWriteCommand implements ArticleCommand {
+public class ArticleDetailCommand implements ArticleCommand {
 	
 	@Override
 	public void execute(Model model) {
 		Map<String, Object> map = model.asMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
-		
-		String writer = request.getParameter("writer");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
+		String articleId = request.getParameter("id");
 		
 		ArticleDao dao = new ArticleDao();
-		dao.write(writer, title, content);
+		ArticleDto dto = dao.detail(articleId);
+		
+		model.addAttribute("detail_view", dto);
 	}
 }
