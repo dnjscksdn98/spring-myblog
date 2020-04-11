@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.spring.myblog.commands.ArticleCommand;
 import com.spring.myblog.commands.ArticleListCommand;
 import com.spring.myblog.commands.ArticleWriteCommand;
+import com.spring.myblog.commands.ArticleDetailCommand;
 
 
 @Controller
@@ -35,5 +36,13 @@ public class ArticleController {
 		command = new ArticleWriteCommand();
 		command.execute(model);
 		return "redirect:list";
+	}
+	
+	@RequestMapping("/detail_view")
+	public String detailView(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		command = new ArticleDetailCommand();
+		command.execute(model);
+		return "detail_view";
 	}
 }
