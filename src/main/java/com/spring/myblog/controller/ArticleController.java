@@ -36,4 +36,13 @@ public class ArticleController {
 		command.execute(model);
 		return "redirect:list";
 	}
+	
+	@RequestMapping("/detail_view")
+	public String detailView(HttpServletRequest request, Model model) {
+		model.addAttribute("request", request);
+		
+		// command
+		
+		return "detail_view";
+	}
 }
