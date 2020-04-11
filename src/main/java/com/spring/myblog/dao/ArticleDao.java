@@ -23,6 +23,7 @@ public class ArticleDao {
 	
 	private final String ARTICLE_LIST = "select * from articles order by rdate desc";
 	private final String ARTICLE_WRITE = "insert into articles(id, writer, title, content) values(articles_seq.nextval, ?, ?, ?)";
+	private final String ARTICLE_DETAIL = "select * from articles where id = ?";
 	
 	public ArticleDao() {		
 		try {
@@ -82,5 +83,34 @@ public class ArticleDao {
 		} finally {
 			JdbcUtil.closeResource(pstmt, conn);
 		}
+	}
+	
+	public ArticleDto detail(String articleId) {
+		ArticleDto dto = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			String query = ARTICLE_DETAIL;
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, Integer.parseInt(articleId));
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int id = rs.getInt("id");
+				String writer = rs.getString("writer");
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				Timestamp rdate = rs.getTimestamp("rdate");
+				int views = rs.getInt("views");
+				
+				dto = new ArticleDto(id, writer, title, content, rdate, views);
+			}
+		} catch(Exception e) {
+			e.printStackTrace();
+		
+		} finally {
+			JdbcUtil.closeResource(rs, pstmt, conn);
+		}
+		return dto;
 	}
 }
